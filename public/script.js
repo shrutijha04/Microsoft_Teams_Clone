@@ -1,4 +1,4 @@
-const socket = io('/');
+const socket = io();
 
 const videoGrid = document.getElementById('videoGrid');
 
@@ -25,7 +25,8 @@ navigator.mediaDevices.getUserMedia({
 
     socket.on('userConnected', userID => {
         connectToNewUser(userID, stream);
-        console.log("User connected" + userID);
+        
+        //console.log("User connected" + userID);
     });
 
     socket.on('userDisconnected', userID => {
@@ -40,18 +41,22 @@ navigator.mediaDevices.getUserMedia({
         }
     });
 
-    socket.on('createMsg', message => {
-        $('.messages').append(`<li class="message"><b>user</b><br/>${message}</li>`);
+    socket.on('createMsg', ({username, message}) => {
+        $('.messages').append(`<li class="message"><b>${username}</b><br/>${message}</li>`);
         scrollToBottom();
+        //Object.keys(peers).forEach((prop)=> console.log(peers[prop]));
+        console.log(peers);
     })
 
 })
 
 peer.on('open', id => {
-    socket.emit('joinMeeting', meeting_ID, id);
+    //console.log(usernameVideo +" "+meeting_ID+" "+id);
+    socket.emit('joinMeeting', ({usernameVideo, meeting_ID, id}));
 })
 
 function connectToNewUser(userID, stream){
+    //console.log("connecting to new user");
     const call = peer.call(userID, stream);
     const video = document.createElement('video');
     call.on('stream', userVideoStream => {
@@ -69,7 +74,9 @@ function addVideoStream(video , stream){
     video.addEventListener('loadedmetadata', () => {
         video.play();
     });
+
     videoGrid.append(video);
+   // console.log("appended");
 }
 
 const scrollToBottom = () => {
@@ -130,7 +137,34 @@ const setPlayVideo = () => {
     `
     document.querySelector('.main_video_button').innerHTML = html;
 }
+
+const openChatWin = () => {
+    document.getElementById("sidebar").style.width = "250px";
+    document.getElementById("mainWin").style.marginRight = "250px";
+}
+
+const closeChatWin = () => {
+    document.getElementById("sidebar").style.width = "0";
+    document.getElementById("mainWin").style.marginRight= "0";
+}
   
+const copyToClipboard = str => {
+    const el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  };
+  
+document.getElementById('copy-btn').addEventListener('click', () => {
+  
+      copyToClipboard(meeting_ID);
+      alert("Meeting link copied!");
+  });
 
 
 

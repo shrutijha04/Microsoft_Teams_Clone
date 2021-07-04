@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" type="text/css" href="chat_style.css" />
+		<title>Teams Clone</title>
+	</head>
+	<body>
+		<div class="join-container">
+			<header class="join-header">
+				<h1>Microsoft Teams Chat</h1>
+			</header>
+			<div class="join-main">
+				<form method="POST" action="/chat">
+					<div class="form-control">
+						<label for="username">Username</label>
+						<input
+							type="text"
+							name="username"
+							id="username"
+							placeholder="Enter username..."
+							required
+						/>
+					</div>
+					<div class="form-control">
+						<label for="room">Chat Room Link</label>
+						<input
+							type="text"
+							name="room"
+							id="room"
+							placeholder="Enter chat link..."
+							required
+						/>
+					</div>
+					<input type="submit" name="submit" value="Join Chat"/>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

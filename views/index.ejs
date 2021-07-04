@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Teams Clone | Home </title>
+    <link rel="stylesheet" href="home_style.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo_content">
+      <div class="logo">
+        <div class="logo_name">Microsoft Teams</div>
+      </div>
+      <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav_list">
+      <li>
+        <a href="/chat">
+          <i class='bx bx-chat' ></i>
+          <span class="links_name">Chat</span>
+        </a>
+        <span class="tooltip">Chat</span>
+      </li>
+      <li>
+        <a href="/video-call">
+          <i class='bx bx-video'></i>
+          <span class="links_name">Video Call</span>
+        </a>
+        <span class="tooltip">Video Call</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-cog' ></i>
+          <span class="links_name">Setting</span>
+        </a>
+        <span class="tooltip">Setting</span>
+      </li>
+    </ul>
+  </div>
+  <div class="home_content">
+    <div class="top">
+      <h1> Microsoft Teams</h1>
+    </div>
+    <div class="text">Home Content</div>
+  </div>
+
+  <script>
+   let btn = document.querySelector("#btn");
+   let sidebar = document.querySelector(".sidebar");
+
+   btn.onclick = function() {
+     sidebar.classList.toggle("active");
+   }
+  
+  </script>
+
+</body>
+</html>
