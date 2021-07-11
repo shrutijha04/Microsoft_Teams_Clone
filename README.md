@@ -37,7 +37,8 @@ Participants can join the video meeting, chat inside the meeting, and then leave
 
 ## Screenshots
 
-
-  
- 
-
+## Plans to Extend the Project in the future
+Plan to add the following features in the app in the future:<br/>
+1. Google authentication option when logging into the meeting/chat room.<br/>
+2. Developing proper database of users of the app.<br/>
+3. Share files and other media types also in the chat room.<br/>
