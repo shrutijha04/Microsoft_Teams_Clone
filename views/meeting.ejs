@@ -38,15 +38,15 @@
                         <span>Stop Video</span>
                         
                     </div>
-                    <div class="main_controls_button">
+                    <div class="main_controls_button" id="show-users-btn" >
                         <i class="fas fa-user-friends"></i>
                         <span>Participants</span>
                     </div>
                 </div>
                 <div class="main_controls_block">
                     
-                    <div class="main_controls_button" onclick="openChatWin()">
-                        <i class='bx bx-message-rounded-detail'></i>
+                    <div class="main_controls_button chat-icon" onclick="openChatWin()">
+                        <i class='bx bx-message-rounded-detail' id="chat-icon"></i>
                         <span>Chat</span>
                     </div>
                 </div>
@@ -69,9 +69,9 @@
 
     <div id="sidebar" class="main_right">
         <a href="javascript:void(0)" class="crossbtn" onclick="closeChatWin()"
-        >x</a>
+        >+</a>
         <div class="main_header">
-            <h5>CHAT</h5>
+            <h5> CHAT </h5>
         </div>
         <div class="main_chatWindow">
             <ul class="messages">
@@ -79,6 +79,14 @@
         </div>
         <div class="main_msgContainer">
             <input id="chat_msg" type="text" placeholder="Type your msg here....">
+        </div>
+    </div>
+
+    <div class="bg-modal">
+        <div class="modal-contents">
+            <div class="close-btn">+</div>
+            <h3>Participants</h3>
+            <ul id="users"></ul>
         </div>
     </div>
     <script src="https://kit.fontawesome.com/c939d0e917.js"></script>

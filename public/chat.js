@@ -96,3 +96,23 @@ document.getElementById('leave-btn').addEventListener('click', () => {
   }
 });
 
+document.getElementById('launch-btn').addEventListener('click', () => {
+
+    let str = generateString(15);
+    const msg = `${username} launched a meeting! \nMeeting Link: ${str}`;
+    socket.emit('chatMessage', msg);
+    window.open(`/video-call-in-chat/${str}`, '_blank');
+});
+
+
+const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+function generateString(length) {
+    let result = '';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}

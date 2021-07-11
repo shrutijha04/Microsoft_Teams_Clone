@@ -42,7 +42,7 @@ app.get('/', (req,res) => {
 
 let usernameVideo;
 app.get('/video-call', (req,res) => {
-    usernameVideo=null;
+    usernameVideo="User";
     res.render('videoform.ejs');
    // res.redirect(`/video-call/${uuidv4()}`);
 })
@@ -55,7 +55,7 @@ app.post('/video-call', (req,res) => {
 
 let username;
 app.get('/chat', (req,res) => {
-    username=null;
+    username="User";
     res.render('chatform.ejs');
 })
 
@@ -68,11 +68,22 @@ app.post('/chat', (req,res) => {
 app.get('/chat/:chatid', (req,res) => {
     //console.log(req.params.chatid);
     res.render('chatroom.ejs', { chatID : req.params.chatid, username: username});
+
 })
 
 app.get('/video-call/:meeting', (req,res) => {
 
   res.render('meeting.ejs', { meetingID : req.params.meeting, usernameVideo: usernameVideo })
+})
+
+app.get('/video-call-in-chat', (req,res) => {
+
+    res.redirect(`/video-call-in-chat/${uuidv4()}`);
+})
+
+app.get('/video-call-in-chat/:meeting', (req,res) => {
+
+  res.render('meeting.ejs', { meetingID : req.params.meeting, usernameVideo: username })
 })
 
 
@@ -138,9 +149,9 @@ io.on('connection', socket => {
     // Listen for chatMessage
     socket.on('chatMessage', msg => {
       const user = getCurrentUser(socket.id);
-  
       io.to(user.room).emit('Chatmessage', formatMessage(user.username, msg));
     });
+
   
     // Runs when client disconnects
     socket.on('disconnect', () => {
@@ -159,10 +170,8 @@ io.on('connection', socket => {
         });
       }
     });
+
 });
-
-
-
 
 
 const PORT = process.env.PORT || 3000;

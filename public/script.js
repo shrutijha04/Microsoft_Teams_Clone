@@ -1,11 +1,12 @@
 const socket = io();
 
 const videoGrid = document.getElementById('videoGrid');
+const userList = document.getElementById('users');
 
 const peer = new Peer(undefined);
 
 const myVideo = document.createElement('video');
-myVideo.muted = true;
+//myVideo.muted = true;
 let myVideoStream;
 const peers = {}
 navigator.mediaDevices.getUserMedia({
@@ -16,6 +17,7 @@ navigator.mediaDevices.getUserMedia({
     addVideoStream(myVideo, stream);
 
     peer.on('call', call => {
+        
         call.answer(stream);
         const video1 = document.createElement('video');
         call.on('stream', userVideoStream => {
@@ -29,6 +31,10 @@ navigator.mediaDevices.getUserMedia({
         //console.log("User connected" + userID);
     });
 
+    socket.on('meetingUsers', ({ room, users }) => {
+        outputUsers(users);
+      });
+
     socket.on('userDisconnected', userID => {
         if(peers[userID]) peers[userID].close();
     });
@@ -36,16 +42,20 @@ navigator.mediaDevices.getUserMedia({
     let text = $('input');
     $('html').keydown((e) => {
         if (e.which == 13 && text.val().length !== 0){
-        socket.emit('message', text.val());
-        text.val('');
+          let msg = text.val();
+          text.val('');
+        socket.emit('message', msg);
+        chaticon.classList.add('icon-cog');
+        //text.val('');
         }
     });
 
     socket.on('createMsg', ({username, message}) => {
         $('.messages').append(`<li class="message"><b>${username}</b><br/>${message}</li>`);
         scrollToBottom();
+
         //Object.keys(peers).forEach((prop)=> console.log(peers[prop]));
-        console.log(peers);
+        //console.log(peers);
     })
 
 })
@@ -74,7 +84,6 @@ function addVideoStream(video , stream){
     video.addEventListener('loadedmetadata', () => {
         video.play();
     });
-
     videoGrid.append(video);
    // console.log("appended");
 }
@@ -139,8 +148,17 @@ const setPlayVideo = () => {
 }
 
 const openChatWin = () => {
-    document.getElementById("sidebar").style.width = "250px";
-    document.getElementById("mainWin").style.marginRight = "250px";
+
+    var sidebar = document.getElementById("sidebar");
+    var mainWin = document.getElementById("mainWin");
+
+    if (sidebar.style.width == "270px" && mainWin.style.marginRight == "270px") {
+        sidebar.style.width = "0";
+        mainWin.style.marginRight = "0";
+    } else {
+        sidebar.style.width = "270px";
+        mainWin.style.marginRight = "270px"
+    }
 }
 
 const closeChatWin = () => {
@@ -165,6 +183,23 @@ document.getElementById('copy-btn').addEventListener('click', () => {
       copyToClipboard(meeting_ID);
       alert("Meeting link copied!");
   });
+
+document.getElementById('show-users-btn').addEventListener("click", function() {
+	document.querySelector('.bg-modal').style.display = "flex";
+});
+
+document.querySelector('.close-btn').addEventListener("click", function() {
+	document.querySelector('.bg-modal').style.display = "none";
+});
+
+function outputUsers(users) {
+    userList.innerHTML = '';
+    users.forEach((user) => {
+      const li = document.createElement('li');
+      li.innerText = user.username;
+      userList.appendChild(li);
+    });
+  }
 
 
 
