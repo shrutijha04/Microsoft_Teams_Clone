@@ -12,7 +12,7 @@ A clone of the Microsoft Teams App with video calling and chat feature, made usi
 ### Features Implemented
 The homepage of the app provides two options:
 
-1. **Video meeting option:**
+1. **Video meeting option:**<br/>
   1.1 Video calling with any number of people.
   1.2 Able to mute/unmute audio and on/off camera during video call meeting.
   1.3 Able to see the participants' list in the meeting (changes dynamically as people join and leave meeting).
