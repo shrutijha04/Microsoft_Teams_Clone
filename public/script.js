@@ -6,7 +6,7 @@ const userList = document.getElementById('users');
 const peer = new Peer(undefined);
 
 const myVideo = document.createElement('video');
-//myVideo.muted = true;
+myVideo.muted = true;
 let myVideoStream;
 const peers = {}
 navigator.mediaDevices.getUserMedia({
