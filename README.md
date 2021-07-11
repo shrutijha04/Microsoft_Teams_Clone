@@ -35,6 +35,8 @@ The app provides the option to start a video call meeting when inside a chat roo
 The chat room has 'Launch Meeting' button in the sidebar which can be clicked and a new meeting opens in a new tab. The meeting link is shared in the chat.<br/>
 Participants can join the video meeting, chat inside the meeting, and then leave the meeting to continue their conversation the chat room again.
 
+## Screenshots
+
 
   
  
