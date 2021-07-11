@@ -32,7 +32,7 @@ The homepage of the app provides two options:
   
 ## Implementing the ADAPT Feature in the App
 The app provides the option to start a video call meeting when inside a chat room. <br/>
-The chat room has 'Launch Meeting' button the sidebar which can be clicked and a new meeting opens in a new tab. The meeting link is shared in the chat.<br/>
+The chat room has 'Launch Meeting' button in the sidebar which can be clicked and a new meeting opens in a new tab. The meeting link is shared in the chat.<br/>
 Participants can join the video meeting, chat inside the meeting, and then leave the meeting to continue their conversation the chat room again.
 
 
