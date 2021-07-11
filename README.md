@@ -23,7 +23,7 @@ The homepage of the app provides two options:
   
 2. **Chat room option:**<br/>
   2.1 Chat room which any number of people can join.<br/>
-  2.2 Able to see the participants' list in the meeting (changes dynamically as people join and leave chat room).<br/>
+  2.2 Able to see the participants' list in the room (changes dynamically as people join and leave chat room).<br/>
   2.3 Can send as many messages as you want. No limit on number of messages that can be sent or received.<br/>
   2.4 Messages displayed along with username of the participant sending the message and current time.<br/>
   2.5 Ability to start video meeting from the chat room. The meeting link is shared with everyone once someone starts a meeting by clicking on Launch Meeting button.<br/>
