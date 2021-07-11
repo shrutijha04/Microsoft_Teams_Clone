@@ -45,16 +45,14 @@ navigator.mediaDevices.getUserMedia({
           let msg = text.val();
           text.val('');
         socket.emit('message', msg);
-        chaticon.classList.add('icon-cog');
         //text.val('');
         }
     });
 
     socket.on('createMsg', ({username, message}) => {
+        changeiconToPing();
         $('.messages').append(`<li class="message"><b>${username}</b><br/>${message}</li>`);
         scrollToBottom();
-
-        //Object.keys(peers).forEach((prop)=> console.log(peers[prop]));
         //console.log(peers);
     })
 
@@ -120,6 +118,22 @@ const setUnmuteButton = () => {
     document.querySelector('.main_mute_button').innerHTML = html;
 }
 
+const changeiconToPing = () =>{
+  const html = `
+  <i class='bx bx-message-rounded-add'></i>
+  <span>Chat</span>
+  `
+  document.querySelector('.chat-icon').innerHTML = html;
+}
+
+const changeiconToNormal = () =>{
+  const html = `
+  <i class='bx bx-message-rounded'></i>
+  <span>Chat</span>
+  `
+  document.querySelector('.chat-icon').innerHTML = html;
+}
+
 const playStop = () => {
     let enabled = myVideoStream.getVideoTracks()[0].enabled;
     if (enabled) {
@@ -158,6 +172,7 @@ const openChatWin = () => {
     } else {
         sidebar.style.width = "270px";
         mainWin.style.marginRight = "270px"
+        changeiconToNormal();
     }
 }
 
