@@ -172,6 +172,7 @@ body{
   background: #E4E9F7;
   box-shadow: 0 5px 10px rgba(0,0,0,0.2px);
   transition: all 0.5s ease;
+  
 }
 .sidebar.active ~ .home_content{
   z-index: 100;
@@ -199,4 +200,38 @@ body{
     background: #47235f;
     text-align: right;
     border-radius: 2px;
+}
+
+.home_content .row{
+    display: flex;
+    height: 88%;
+    align-items: center;
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+.home_content .col{
+    flex-basis: 50%;
+}
+
+.home_content .col .h2{
+    font-size: 200px;
+}
+
+.col .p{
+  font-size: 40px;
+  line-height: 40px;
+}
+
+.card{
+  width: 700px;
+  height: 500px;
+  display: inline-block;
+  padding: 15px 25px;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 10px 15px;
+  background-position: center;
+  background-size: cover;
+  background-image: url(/homeicon.jpg);
 }
