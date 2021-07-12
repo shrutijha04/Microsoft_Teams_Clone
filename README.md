@@ -36,6 +36,11 @@ The chat room has 'Launch Meeting' button in the sidebar which can be clicked an
 Participants can join the video meeting, chat inside the meeting, and then leave the meeting to continue their conversation in the chat room again.
 
 ## Screenshots
+  <img src="ScreenShots/home.png" width="700" height="500">
+  <img src="ScreenShots/videoform.png" width="700" height="500">
+  <img src="ScreenShots/video.png" width="700" height="500">
+  <img src="ScreenShots/chat.png" width="700" height="500">
+ 
 
 ## Plans to Extend the Project in the Future
 Plan to add the following features in the app in the future:<br/>
