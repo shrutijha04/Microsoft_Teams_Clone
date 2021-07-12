@@ -4,6 +4,9 @@ A clone of the Microsoft Teams App with **video calling** and **chat feature**, 
 ## Link to the Web Application
 [Click to see!](https://historic-grand-teton-33760.herokuapp.com)
 
+## Link to App Demo
+[Click to see!](https://youtu.be/S5Cf13zqTx4)
+
 ## To Run on Localhost server
 1) Clone the repository.
 2) In project directory run: `npm install`. This will install all the dependecies in the local node_modules folder.
